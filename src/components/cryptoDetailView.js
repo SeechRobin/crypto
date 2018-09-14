@@ -16,11 +16,7 @@ class CryptoDetailView extends Component {
           <CardTitle>Card title</CardTitle>
           <CardSubtitle>Card subtitle</CardSubtitle>
         </CardBody>
-        <img
-          width="50%"
-          src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-          alt="img"
-        />
+        <img width="10%" src={this.props.details} alt="img" />
         <CardBody>
           <CardText>
             Some quick example text to build on the card title and make up the

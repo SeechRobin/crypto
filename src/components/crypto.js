@@ -26,9 +26,9 @@ class Crypto extends Component {
     this.setState({
       modal: !this.state.modal
     });
-    console.log(this);
+    console.log(this.props.crypto.id);
 
-    this.setState({ logo: this.store.getMetaData(1) });
+    this.setState({ logo: this.store.getMetaData(this.props.crypto.id) });
   }
 
   render() {
@@ -48,10 +48,9 @@ class Crypto extends Component {
             >
               <ModalHeader toggle={this.toggle}>
                 {this.props.crypto.name}
-                {this.state.logo}
               </ModalHeader>
               <ModalBody>
-                <CryptoDetailView />
+                <CryptoDetailView details={this.state.logo} />
               </ModalBody>
               <ModalFooter>
                 <Button color="primary" onClick={this.toggle}>
