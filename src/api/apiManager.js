@@ -32,7 +32,7 @@ export default class ApiManager {
           Origin: "https://pro-api.coinmarketcap.com/v1/cryptocurrency/info"
         },
         params: {
-          id: "1"
+          id: "1,2,3"
         }
       }
     );

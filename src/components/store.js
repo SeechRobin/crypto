@@ -7,7 +7,7 @@ class Storage {
   }
 
   storeMetaData(results) {
-    console.log(results);
+    // console.log(results);
     this.api.getCryptoMetaData().then(res => {
       localStorage.setItem("meta_data", JSON.stringify(res.data.data));
     });
@@ -15,8 +15,9 @@ class Storage {
 
   getMetaData(id) {
     let meta = localStorage.getItem("meta_data");
-    console.log(meta);
-    return meta[id].logo;
+    let meta_array = Object.values(JSON.parse(meta));
+    console.log(meta_array[0].logo);
+    return meta_array[0].logo;
   }
 }
 

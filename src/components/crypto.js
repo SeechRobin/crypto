@@ -13,7 +13,8 @@ class Crypto extends Component {
     super(props);
     this.state = {
       modal: false,
-      crypto_metadata: []
+      crypto_metadata: [],
+      logo: ""
     };
     this.api = new apiManager();
     this.store = new store();
@@ -26,6 +27,8 @@ class Crypto extends Component {
       modal: !this.state.modal
     });
     console.log(this);
+
+    this.setState({ logo: this.store.getMetaData(1) });
   }
 
   render() {
@@ -44,7 +47,8 @@ class Crypto extends Component {
               className={this.props.className}
             >
               <ModalHeader toggle={this.toggle}>
-                {this.props.crypto.name} {this.store.getMetaData(1)}
+                {this.props.crypto.name}
+                {this.state.logo}
               </ModalHeader>
               <ModalBody>
                 <CryptoDetailView />
