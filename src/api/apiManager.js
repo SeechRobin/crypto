@@ -5,7 +5,7 @@ export default class ApiManager {
     this.domain = "";
   }
 
-  getAllLatestCryptos() {
+  getAllLatestCryptos(start, limit) {
     return axios.get(
       "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest",
       {
@@ -15,15 +15,15 @@ export default class ApiManager {
             "https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest"
         },
         params: {
-          start: 1,
-          limit: 10,
+          start: start,
+          limit: limit,
           convert: "EUR"
         }
       }
     );
   }
 
-  getCryptoMetaData() {
+  getCryptoMetaData(crypto_id) {
     return axios.get(
       "https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/info",
       {
@@ -32,7 +32,7 @@ export default class ApiManager {
           Origin: "https://pro-api.coinmarketcap.com/v1/cryptocurrency/info"
         },
         params: {
-          id: "1,2,3"
+          id: crypto_id
         }
       }
     );

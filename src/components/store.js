@@ -7,7 +7,8 @@ class Storage {
   }
 
   storeMetaData(results) {
-    this.api.getCryptoMetaData().then(res => {
+    let ids = Array.from({ length: results }, (v, i) => i);
+    this.api.getCryptoMetaData(ids).then(res => {
       localStorage.setItem("meta_data", JSON.stringify(res.data.data));
     });
   }

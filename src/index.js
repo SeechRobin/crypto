@@ -4,7 +4,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import registerServiceWorker from "./registerServiceWorker";
-import Cryptos from "./components/cryptos";
+import Home from "./components/home";
 
-ReactDOM.render(<Cryptos />, document.getElementById("root"));
+ReactDOM.render(<Home />, document.getElementById("root"));
 registerServiceWorker();

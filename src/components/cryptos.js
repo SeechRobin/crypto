@@ -1,36 +1,78 @@
 import React, { Component } from "react";
 import Crypto from "./crypto";
 
-import { Jumbotron } from "reactstrap";
+import { Container, Row, Button } from "reactstrap";
 
 import apiManager from "../api/apiManager";
 import store from "./store";
 
+import Loader from "react-loader-spinner";
+
 class Cryptos extends Component {
-  state = { cryptos: [] };
+  state = { cryptos: [], currentStartPage: 1, isLoading: true };
 
   constructor(props) {
     super(props);
     this.api = new apiManager();
     this.store = new store();
+    this.handleNextPage = this.handleNextPage.bind(this);
   }
 
   componentDidMount() {
-    this.api.getAllLatestCryptos().then(res => {
-      this.setState({ cryptos: res.data.data });
-      this.store.storeMetaData(this.state.cryptos.length); // length of results to cache the equivalent size
+    this.api.getAllLatestCryptos(this.state.currentStartPage, 18).then(res => {
+      this.setState({ cryptos: res.data.data, isLoading: false });
     });
   }
 
-  render() {
+  handlePreviousPage = () => {
+    console.log(this.state.currentStartPage);
+    let prevPosition = this.state.currentStartPage - 10;
+
+    if (prevPosition > 0) {
+      this.setState({ currentStartPage: prevPosition, isLoading: true });
+      this.api.getAllLatestCryptos(prevPosition, 18).then(res => {
+        this.setState({ cryptos: res.data.data, isLoading: false });
+      });
+    }
+  };
+
+  handleNextPage = () => {
+    console.log(this.state.currentStartPage);
+    let nextPosition = this.state.currentStartPage + 10;
+    this.setState({ currentStartPage: nextPosition, isLoading: true });
+    this.api.getAllLatestCryptos(nextPosition, 18).then(res => {
+      this.setState({ cryptos: res.data.data, isLoading: false });
+    });
+  };
+
+  renderLoading() {
     return (
-      <div>
-        <Jumbotron>Latest</Jumbotron>
-        {this.state.cryptos.map(crypto => (
-          <Crypto key={crypto.id} crypto={crypto} />
-        ))}
+      <div className="loading-spinner">
+        <Loader type="ThreeDots" color="#00BFFF" height="250" width="250" />
       </div>
     );
+  }
+
+  render() {
+    if (this.state.isLoading) {
+      return this.renderLoading();
+    } else {
+      return (
+        <div>
+          <Container>
+            <Row>
+              {this.state.cryptos.map(crypto => (
+                <Crypto key={crypto.id} crypto={crypto} />
+              ))}
+            </Row>
+            <div className="pagination-button">
+              <Button onClick={this.handlePreviousPage}> Previous</Button>
+              <Button onClick={this.handleNextPage}> Next</Button>
+            </div>
+          </Container>
+        </div>
+      );
+    }
   }
 }
 export default Cryptos;
