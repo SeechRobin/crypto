@@ -57,7 +57,10 @@ class Crypto extends Component {
                   {this.props.crypto.name}
                 </ModalHeader>
                 <ModalBody>
-                  <CryptoDetailView details={this.state.logo} />
+                  <CryptoDetailView
+                    logo={this.state.logo}
+                    details={this.props.crypto}
+                  />
                 </ModalBody>
               </Modal>
             </div>
