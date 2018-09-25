@@ -4,13 +4,28 @@ body {
   font-family: "PT Serif", serif;
 }
 
-div#crypto-container {
+/* div#crypto-container {
   background: white;
   width: 100%;
   margin: 0 auto 4px auto;
   padding: 1em;
   box-shadow: 1px 1px 0 lightgrey;
-  height: 60px;
+  min-height: 106px;
+  min-width: 200px;
+} */
+
+.crypto-card {
+  margin: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  width: 205px;
+  height: 100px;
+  padding: 2rem 1em;
+  vertical-align: middle;
+  border-left: 3px solid rgb(0, 191, 255);
+}
+.crypto-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
 span.left {
@@ -22,15 +37,88 @@ span.right {
 }
 
 h1.main-heading {
-  font-size: 70px;
+  font-size: 40px;
   text-align: center;
   color: rgb(0, 191, 255);
 }
 
 div.pagination-button {
   text-align: center;
+  padding: 1em;
 }
 
 .loading-spinner {
   text-align: center;
+}
+
+/* Crypto Details view */
+
+.price {
+  padding: 1em 2em;
+  font-size: 22px;
+  font-weight: 200;
+}
+
+.percantage-changes {
+  border-top: 4px solid rgb(0, 191, 255);
+  padding: 3em 2em;
+  box-shadow: 0 2px 2px #ccc;
+}
+
+.percantage-changes p {
+  font-size: 12px;
+}
+.change {
+  font-size: 24px;
+  font-weight: 200;
+}
+
+.crytpo-modal {
+  padding: 1em 0;
+}
+
+/* Buttons */
+
+.pagination-buttons {
+  text-align: center;
+  padding: 1em;
+}
+
+.button {
+  font: inherit;
+  border: 1px solid rgb(0, 191, 255);
+  background: rgb(0, 191, 255);
+  color: black;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.button:active,
+.button:hover {
+  background: grey;
+}
+.button:focus {
+  outline: none;
+}
+
+.pagination-buttons > .button:not(:last-child) {
+  margin-right: 10px;
+}
+
+/* Green and Red Trianle */
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid green;
+  color: green;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid red;
+  color: red;
 }

@@ -33,15 +33,13 @@ class Crypto extends Component {
         this.setState({ logo: meta_array[0].logo });
       });
     }
-
-    // this.setState({ logo: this.store.getMetaData(this.props.crypto.id) });
   }
 
   render() {
     return (
-      <Col xs="6">
+      <Col xs="auto">
         <div>
-          <div id="crypto-container" onClick={this.toggle}>
+          <div className="crypto-card" onClick={this.toggle}>
             <span className="left">{this.props.crypto.name}</span>
             <span className="right">{this.props.crypto.symbol}</span>
           </div>
