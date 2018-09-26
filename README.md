@@ -4,8 +4,6 @@
 
 - [Install](#install)
 - [Proxy](#proxy)
-- [API](#api)
-- [Contribute](#contribute)
 - [License](#license)
 
 ## Install
@@ -18,7 +16,7 @@ $ npm start
 
 ## Proxy
 
-I used Cors-Anywhere as the CORS Proxy server. You have to run this as well.
+I used [Cors-Anywhere](https://github.com/Rob--W/cors-anywhere) as the CORS Proxy server. You have to run this as well.
 
 ```sh
 $ git clone https://github.com/Rob--W/cors-anywhere.git
@@ -26,3 +24,7 @@ $ cd cors-anywhere/
 $ npm install
 $ npm start
 ```
+
+## License
+
+Licensed under the MIT License.
