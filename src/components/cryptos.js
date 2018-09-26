@@ -67,6 +67,7 @@ class Cryptos extends Component {
             </Row>
 
             <div className="pagination-buttons">
+              <button className="back-arrow"> </button>
               <button onClick={this.handlePreviousPage} className="button">
                 Prev
               </button>
