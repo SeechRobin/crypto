@@ -4,10 +4,6 @@ import { Jumbotron, Container } from "reactstrap";
 import Cryptos from "./cryptos";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   render() {
     return (
       <div>
