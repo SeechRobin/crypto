@@ -15,7 +15,6 @@ class Cryptos extends Component {
     super(props);
     this.api = new apiManager();
     this.store = new store();
-    this.handleNextPage = this.handleNextPage.bind(this);
   }
 
   componentDidMount() {
@@ -65,7 +64,6 @@ class Cryptos extends Component {
             </Row>
 
             <div className="pagination-buttons">
-              <button className="back-arrow"> </button>
               <button onClick={this.handlePreviousPage} className="button">
                 Prev
               </button>

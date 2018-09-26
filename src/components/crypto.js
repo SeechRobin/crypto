@@ -13,7 +13,6 @@ class Crypto extends Component {
     super(props);
     this.state = {
       modal: false,
-      crypto_metadata: [],
       logo: ""
     };
     this.api = new apiManager();
