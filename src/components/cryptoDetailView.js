@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { Row, Col, Container } from "reactstrap";
 
+import Helper from "../helper/helper";
+
 class CryptoDetailView extends Component {
-  cleanAmount = price => {
-    let clean_amount = parseFloat(Math.round(price * 100) / 100).toFixed(2);
-    return clean_amount;
-  };
+  constructor(props) {
+    super(props);
+    this.helper = new Helper();
+  }
 
   getChangeClasses = percentage => {
     let classes = "";
-    let clean_percantage = parseFloat(
-      Math.round(percentage * 100) / 100
-    ).toFixed(2);
+    let clean_percantage = this.helper.convertToTwoDecimal(percentage);
     classes += clean_percantage > 0 ? "arrow-up" : "arrow-down";
     return classes;
   };
@@ -28,7 +28,10 @@ class CryptoDetailView extends Component {
               <Col xs="6">
                 <div>Price </div>
                 <div>
-                  € {this.cleanAmount(this.props.details.quote["EUR"].price)}
+                  €
+                  {this.helper.convertToTwoDecimal(
+                    this.props.details.quote["EUR"].price
+                  )}
                 </div>
               </Col>
             </Row>
@@ -43,7 +46,7 @@ class CryptoDetailView extends Component {
                     this.props.details.quote["EUR"].percent_change_1h
                   )}
                 >
-                  {this.cleanAmount(
+                  {this.helper.convertToTwoDecimal(
                     this.props.details.quote["EUR"].percent_change_1h
                   )}
                   %
@@ -56,7 +59,7 @@ class CryptoDetailView extends Component {
                     this.props.details.quote["EUR"].percent_change_24h
                   )}
                 >
-                  {this.cleanAmount(
+                  {this.helper.convertToTwoDecimal(
                     this.props.details.quote["EUR"].percent_change_24h
                   )}
                   %
@@ -69,7 +72,7 @@ class CryptoDetailView extends Component {
                     this.props.details.quote["EUR"].percent_change_7d
                   )}
                 >
-                  {this.cleanAmount(
+                  {this.helper.convertToTwoDecimal(
                     this.props.details.quote["EUR"].percent_change_7d
                   )}
                   %

@@ -6,7 +6,7 @@ export default class ApiManager {
     this.proxyUrl = "http://localhost:8080/";
   }
 
-  getAllLatestCryptos(start, limit) {
+  getAllLatestCryptos = (start, limit) => {
     return axios.get(this.proxyUrl + this.domain + "listings/latest", {
       headers: {
         "X-CMC_PRO_API_KEY": "fd78fd07-1fb5-4522-8301-85f2a0101e9a"
@@ -17,9 +17,9 @@ export default class ApiManager {
         convert: "EUR"
       }
     });
-  }
+  };
 
-  getCryptoMetaData(crypto_id) {
+  getCryptoMetaData = crypto_id => {
     return axios.get(this.proxyUrl + this.domain + "info", {
       headers: {
         "X-CMC_PRO_API_KEY": "fd78fd07-1fb5-4522-8301-85f2a0101e9a"
@@ -28,5 +28,5 @@ export default class ApiManager {
         id: crypto_id
       }
     });
-  }
+  };
 }
