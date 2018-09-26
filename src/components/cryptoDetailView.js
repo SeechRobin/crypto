@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { Row, Col, Container } from "reactstrap";
 
 class CryptoDetailView extends Component {
-  state = { percantage_change: "" };
-  componentDidMount() {
-    console.log(this.props.details.quote["EUR"]);
-  }
-
   cleanAmount = price => {
     let clean_amount = parseFloat(Math.round(price * 100) / 100).toFixed(2);
     return clean_amount;

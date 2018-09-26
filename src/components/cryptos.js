@@ -25,7 +25,6 @@ class Cryptos extends Component {
   }
 
   handlePreviousPage = () => {
-    console.log(this.state.currentStartPage);
     let prevPosition = this.state.currentStartPage - 10;
 
     if (prevPosition > 0) {
@@ -37,7 +36,6 @@ class Cryptos extends Component {
   };
 
   handleNextPage = () => {
-    console.log(this.state.currentStartPage);
     let nextPosition = this.state.currentStartPage + 10;
     this.setState({ currentStartPage: nextPosition, isLoading: true });
     this.api.getAllLatestCryptos(nextPosition, 20).then(res => {
